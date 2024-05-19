@@ -7,5 +7,6 @@ rez_4 = sum(grades[3])/len(grades[3])
 rez_5 = sum(grades[4])/len(grades[4])
 grades_average = [[rez_1], [rez_2], [rez_3], [rez_4],[rez_5]]
 students_list = list(students)
+students_list.sort()
 d = dict(zip(students_list, grades_average))
 print(d)
