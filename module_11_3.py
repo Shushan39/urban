@@ -17,12 +17,17 @@ import inspect
 
 
 def introspection_info(obj):
-    info = {'Type': type(obj), 'Attributes': [attr for attr in dir(obj)], 'Methods': [method for method in dir(obj)],
-            'Module': inspect.getmodule(obj)}
+    info = {}
+
+    info['Type'] = type(obj)
+    info['Attributes'] = [attr for attr in dir(obj) if not callable(getattr(obj, attr))]
+    info['Methods'] = [method for method in dir(obj) if callable(getattr(obj, method))]
+    info['Module'] = inspect.getmodule(obj)
 
     return info
 
+    # Проверочный код:
 
-# Пример работы
+
 number_info = introspection_info(42)
 print(number_info)
